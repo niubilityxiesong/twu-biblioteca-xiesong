@@ -8,7 +8,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -30,7 +29,7 @@ public class ManagementSystemTest {
         //when
         managementSystem.helloPage();
         //then
-        assertThat(output.toString(), is("Welcome to library management system\n"));
+        assertThat(output.toString(), is("Welcome to library management system!\n"));
     }
 
     @Test
@@ -49,5 +48,46 @@ public class ManagementSystemTest {
         managementSystem.showList();
         //then
         assertThat(output.toString(), is(expect));
+    }
+
+    @Test
+    public void mainMenu_should_return_input_number() {
+        //given
+        String data = "1";
+        //when
+        int input;
+        InputStream stdin = System.in;
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            input = managementSystem.mainMenu();
+        } finally {
+            System.setIn(stdin);
+        }
+        //then
+        assertThat(input, is(1));
+    }
+
+    @Test
+    public void checkOutBook_should_return_success_message() {
+        //given
+        String data = "1";
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        //when
+        int input;
+        InputStream stdin = System.in;
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            managementSystem.checkOutBook();
+        } finally {
+            System.setIn(stdin);
+        }
+        //then
+        assertThat(output.toString(), is("please choose a book id:\nThank you! Enjoy the book\n"));
+    }
+
+    @Test
+    public void returnBook_should_return_success_message() {
+
     }
 }

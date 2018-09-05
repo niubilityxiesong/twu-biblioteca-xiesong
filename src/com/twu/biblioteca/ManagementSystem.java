@@ -50,12 +50,15 @@ public class ManagementSystem {
         switch (inputNumber) {
             case 1:
                 showList();
+                systemIn();
                 break;
             case 2:
                 checkOutBook();
+                systemIn();
                 break;
             case 3:
                 returnBook();
+                systemIn();
                 break;
             case 0:
                 break;
@@ -80,7 +83,6 @@ public class ManagementSystem {
         if (mark) {
             System.out.println("That is not a valid book to return.");
         }
-        systemIn();
     }
 
     public void checkOutBook() {
@@ -94,7 +96,6 @@ public class ManagementSystem {
         } else {
             System.out.println("That book is not available");
         }
-        systemIn();
     }
 
     public void showList() {
@@ -111,6 +112,5 @@ public class ManagementSystem {
                 System.out.println();
             }
         }
-        systemIn();
     }
 }
