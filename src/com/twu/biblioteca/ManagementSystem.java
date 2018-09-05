@@ -26,14 +26,18 @@ public class ManagementSystem {
         this.bookList = bookList;
     }
 
-    public void SystemIn() {
-        helloPage();
+    public void systemIn() {
+        int times = 0;
+        if (times == 0) {
+            helloPage();
+            times++;
+        }
         int inputNumber = mainMenu();
         gateway(inputNumber);
     }
 
     public void helloPage() {
-        System.out.println("Welcome to library management system");
+        System.out.println("Welcome to library management system!");
     }
 
     public int mainMenu() {
@@ -53,14 +57,49 @@ public class ManagementSystem {
                 showList();
                 break;
             case 2:
-                //checkOutBook();
+                checkOutBook();
                 break;
             case 3:
-                //returnBook();
+                returnBook();
                 break;
             case 0:
-                return;
+                break;
+            default:
+                System.out.println("Select a valid option!");
+                systemIn();
         }
+    }
+
+    private void returnBook() {
+        boolean mark = true;
+        Scanner inputSelection = new Scanner(System.in);
+        System.out.println("please write the book name:");
+        final String bookName = inputSelection.nextLine();
+        for (Book book : bookList) {
+            if (book.getName().equals(bookName)) {
+                book.setNumber(1);
+                mark = false;
+                System.out.println("Thank you for returning the book.");
+            }
+        }
+        if (mark) {
+            System.out.println("That is not a valid book to return.");
+        }
+        systemIn();
+    }
+
+    public void checkOutBook() {
+        Scanner inputSelection = new Scanner(System.in);
+        System.out.println("please choose a book id:");
+        int selection = inputSelection.nextInt() - 1;
+        Book selectedBook = bookList.get(selection);
+        if (selectedBook.getNumber() > 0) {
+            selectedBook.setNumber(0);
+            System.out.println("Thank you! Enjoy the book");
+        } else {
+            System.out.println("That book is not available");
+        }
+        systemIn();
     }
 
     public void showList() {
@@ -77,5 +116,6 @@ public class ManagementSystem {
                 System.out.println();
             }
         }
+        systemIn();
     }
 }
