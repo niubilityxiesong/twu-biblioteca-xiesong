@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 
 public class ManagementSystemTest {
 
-    ManagementSystem managementSystem;
+    private ManagementSystem managementSystem;
 
     @Before
     public void setUp() {
@@ -74,7 +74,6 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        int input;
         InputStream stdin = System.in;
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -88,6 +87,22 @@ public class ManagementSystemTest {
 
     @Test
     public void returnBook_should_return_success_message() {
-
+        //given
+        String data = "红楼梦";
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        List<Book> bookList = managementSystem.getBookList();
+        bookList.get(0).setNumber(0);
+        managementSystem.setBookList(bookList);
+        //when
+        InputStream stdin = System.in;
+        try {
+            System.setIn(new ByteArrayInputStream(data.getBytes()));
+            managementSystem.returnBook();
+        } finally {
+            System.setIn(stdin);
+        }
+        //then
+        assertThat(output.toString(), is("please write the book name:\nThank you for returning the book.\n"));
     }
 }

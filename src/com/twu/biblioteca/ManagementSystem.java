@@ -68,7 +68,7 @@ public class ManagementSystem {
         }
     }
 
-    private void returnBook() {
+    public void returnBook() {
         boolean mark = true;
         Scanner inputSelection = new Scanner(System.in);
         System.out.println("please write the book name:");
