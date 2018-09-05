@@ -27,3 +27,15 @@ Instructions to open your code in Intellij
 2. Select the directory containing the code
 DONE !
 
+1，欢迎界面：当启动程序时，会有欢迎界面；
+2，书单：在欢迎页面后，有一个书单的界面；
+3，图书详情：书单中专门有一列，为图书详情，包括作者和出版日期
+4，主菜单：应该有一个主菜单，客户通过主菜单选择进入相应的目录，到目前为止，只有一个"书单"选项
+5，错误提示：主菜单中选错时，错误提示：“Select a valid option!”
+6，退出：主菜单中有退出选项
+7，借出书：图书借出后，书单中就没有这本书了
+8，借书成功：图书借出成功后，会有提示语：“Thank you! Enjoy the book”.
+9，借书失败：当图书不存在时，提示语：That book is not available
+10，还书：还书后，书单中出现这本书
+11，还书成功：还书成功后，提示语：“Thank you for returning the book.”
+12，还书失败：当书不属于这个图书馆或者拼写错误时，还书失败，提示语：“That is not a valid book to return.”
