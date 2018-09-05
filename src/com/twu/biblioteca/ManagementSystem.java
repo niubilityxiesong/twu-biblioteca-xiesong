@@ -8,19 +8,28 @@ public class ManagementSystem {
     private List<Book> bookList = new ArrayList<Book>();
 
     public ManagementSystem() {
-        Book book1 = new Book("西游记", "吴承恩", "2018-09", 1);
+        Book book1 = new Book(1,"西游记", "吴承恩", "2018-09", 1);
         this.bookList.add(book1);
-        Book book2 = new Book("红楼梦", "曹雪芹", "2017-09", 1);
+        Book book2 = new Book(2,"红楼梦", "曹雪芹", "2017-09", 1);
         this.bookList.add(book2);
-        Book book3 = new Book("水浒传", "施耐庵", "2016-09", 1);
+        Book book3 = new Book(3,"水浒传", "施耐庵", "2016-09", 1);
         this.bookList.add(book3);
-        Book book4 = new Book("三国演义", "罗贯中", "2015-09", 1);
+        Book book4 = new Book(4,"三国演义", "罗贯中", "2015-09", 1);
         this.bookList.add(book4);
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     public void SystemIn() {
         helloPage();
         int inputNumber = mainMenu();
+        gateway(inputNumber);
     }
 
     public void helloPage() {
@@ -42,12 +51,31 @@ public class ManagementSystem {
         switch (inputNumber) {
             case 1:
                 showList();
+                break;
             case 2:
-                checkOutBook();
+                //checkOutBook();
+                break;
             case 3:
-                returnBook();
+                //returnBook();
+                break;
             case 0:
                 return;
+        }
+    }
+
+    public void showList() {
+        System.out.println("id   name           details");
+        for (Book book : bookList) {
+            if (book.getNumber() > 0) {
+                System.out.print(book.getId());
+                System.out.print("    ");
+                System.out.print(book.getName());
+                System.out.print("      ");
+                System.out.print(book.getAuthor());
+                System.out.print("  ");
+                System.out.print(book.getDate());
+                System.out.println();
+            }
         }
     }
 }
