@@ -27,11 +27,6 @@ public class ManagementSystem {
     }
 
     public void systemIn() {
-        int times = 0;
-        if (times == 0) {
-            helloPage();
-            times++;
-        }
         int inputNumber = mainMenu();
         gateway(inputNumber);
     }
