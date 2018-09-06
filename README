@@ -27,6 +27,7 @@ Instructions to open your code in Intellij
 2. Select the directory containing the code
 DONE !
 
+版本：1.0
 1，欢迎界面：当启动程序时，会有欢迎界面；
 2，书单：在欢迎页面后，有一个书单的界面；
 3，图书详情：书单中专门有一列，为图书详情，包括作者和出版日期
@@ -39,6 +40,7 @@ DONE !
 10，还书：还书后，书单中出现这本书
 11，还书成功：还书成功后，提示语：“Thank you for returning the book.”
 12，还书失败：当书不属于这个图书馆或者拼写错误时，还书失败，提示语：“That is not a valid book to return.”
+版本：2.0
 13，电影菜单：包括名字，年份，导演和电影评级（1-10或者未评级）
 14，租借电影：可以租借电影回家观看
 15，用户登录：包括登录账号：xxx-xxxx和密码，用来借书与还书

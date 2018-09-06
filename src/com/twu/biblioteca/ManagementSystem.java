@@ -19,13 +19,13 @@ public class ManagementSystem {
         Book book4 = new Book(4,"三国演义", "罗贯中", "2015-09", 1);
         this.bookList.add(book4);
 
-        Movie movie1 = new Movie(1, "哈利波特1", "2000-01", "JK", "10", 1);
+        Movie movie1 = new Movie(1, "哈利波特1", "JK", "2000-01", 1, "10");
         this.movieList.add(movie1);
-        Movie movie2 = new Movie(2, "哈利波特2", "2001-01", "JK", "9", 1);
+        Movie movie2 = new Movie(2, "哈利波特2", "JK", "2001-01", 1, "9");
         this.movieList.add(movie2);
-        Movie movie3 = new Movie(3, "哈利波特3", "2003-01", "JK", "8", 1);
+        Movie movie3 = new Movie(3, "哈利波特3", "JK", "2002-01", 1, "8");
         this.movieList.add(movie3);
-        Movie movie4 = new Movie(4, "哈利波特4", "2005-01", "JK", "null", 1);
+        Movie movie4 = new Movie(4, "哈利波特4", "JK", "2003-01", 1, "未评级");
         this.movieList.add(movie4);
 
         User user1 = new User("张三", "123456@qq.com", 123456789013L, "010-1234", "123456");
@@ -40,6 +40,22 @@ public class ManagementSystem {
 
     public void setBookList(List<Book> bookList) {
         this.bookList = bookList;
+    }
+
+    public List<Movie> getMovieList() {
+        return movieList;
+    }
+
+    public void setMovieList(List<Movie> movieList) {
+        this.movieList = movieList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 
     public void systemIn() {
@@ -57,6 +73,7 @@ public class ManagementSystem {
         System.out.println("1. Books List");
         System.out.println("2. CheckOut Book");
         System.out.println("3. Return Book");
+        System.out.println("4. Movies List");
         System.out.println("0. Exit System");
         int selection = inputSelection.nextInt();
         return selection;
@@ -65,7 +82,7 @@ public class ManagementSystem {
     public void gateway(int inputNumber) {
         switch (inputNumber) {
             case 1:
-                showList();
+                showBookList();
                 systemIn();
                 break;
             case 2:
@@ -76,11 +93,25 @@ public class ManagementSystem {
                 returnBook();
                 systemIn();
                 break;
+            case 4:
+                showMovieList();
+                systemIn();
+                break;
             case 0:
                 break;
             default:
                 System.out.println("Select a valid option!");
                 systemIn();
+        }
+    }
+
+    private void showMovieList() {
+        System.out.println("id    name    year    director    level");
+        for (Movie movie : movieList) {
+            if (movie.getNumber() > 0) {
+                System.out.print(movie.getId());
+
+            }
         }
     }
 
@@ -114,18 +145,11 @@ public class ManagementSystem {
         }
     }
 
-    public void showList() {
+    public void showBookList() {
         System.out.println("id   name           details");
         for (Book book : bookList) {
             if (book.getNumber() > 0) {
-                System.out.print(book.getId());
-                System.out.print("    ");
-                System.out.print(book.getName());
-                System.out.print("      ");
-                System.out.print(book.getAuthor());
-                System.out.print("  ");
-                System.out.print(book.getDate());
-                System.out.println();
+                book.printBook(book);
             }
         }
     }

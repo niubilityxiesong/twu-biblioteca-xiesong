@@ -54,4 +54,15 @@ public class Book {
     public void setId(int id) {
         this.id = id;
     }
+
+    public void printBook(Book book) {
+        System.out.print(book.getId());
+        System.out.print("    ");
+        System.out.print(book.getName());
+        System.out.print("      ");
+        System.out.print(book.getAuthor());
+        System.out.print("  ");
+        System.out.print(book.getDate());
+        System.out.println();
+    }
 }

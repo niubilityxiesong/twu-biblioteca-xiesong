@@ -45,7 +45,7 @@ public class ManagementSystemTest {
         String expect = "id   name           details\n";
         expect += "1    西游记      吴承恩  2018-09\n";
         //when
-        managementSystem.showList();
+        managementSystem.showBookList();
         //then
         assertThat(output.toString(), is(expect));
     }
@@ -104,5 +104,21 @@ public class ManagementSystemTest {
         }
         //then
         assertThat(output.toString(), is("please write the book name:\nThank you for returning the book.\n"));
+    }
+
+    @Test
+    public void showMovieList_should_return_all_movies_without_borrow() {
+        //given
+        List<Movie> movieList = managementSystem.getMovieList();
+        movieList.get(0).setNumber(0);
+        movieList.get(1).setNumber(0);
+        movieList.get(2).setNumber(0);
+        managementSystem.setMovieList(movieList);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        //when
+        managementSystem.getMovieList();
+        //then
+        assertThat(output.toString(), is(""));
     }
 }
