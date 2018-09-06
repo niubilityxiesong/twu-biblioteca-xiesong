@@ -117,8 +117,8 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.getMovieList();
+        managementSystem.showMovieList();
         //then
-        assertThat(output.toString(), is(""));
+        assertThat(output.toString(), is("id    name    year    director    level\n4    哈利波特4      JK  2003-01  未评级\n"));
     }
 }

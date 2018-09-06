@@ -105,12 +105,13 @@ public class ManagementSystem {
         }
     }
 
-    private void showMovieList() {
+    public void showMovieList() {
         System.out.println("id    name    year    director    level");
         for (Movie movie : movieList) {
             if (movie.getNumber() > 0) {
-                System.out.print(movie.getId());
-
+                movie.printObject(movie);
+                System.out.print("  ");
+                System.out.println(movie.level);
             }
         }
     }
@@ -149,7 +150,8 @@ public class ManagementSystem {
         System.out.println("id   name           details");
         for (Book book : bookList) {
             if (book.getNumber() > 0) {
-                book.printBook(book);
+                book.printObject(book);
+                System.out.println();
             }
         }
     }

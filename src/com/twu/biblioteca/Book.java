@@ -55,7 +55,7 @@ public class Book {
         this.id = id;
     }
 
-    public void printBook(Book book) {
+    public void printObject(Book book) {
         System.out.print(book.getId());
         System.out.print("    ");
         System.out.print(book.getName());
@@ -63,6 +63,5 @@ public class Book {
         System.out.print(book.getAuthor());
         System.out.print("  ");
         System.out.print(book.getDate());
-        System.out.println();
     }
 }
