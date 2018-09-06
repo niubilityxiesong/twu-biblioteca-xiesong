@@ -3,11 +3,11 @@ package com.twu.biblioteca;
 public class User {
     private String name;
     private String email;
-    private int phoneNumber;
+    private long phoneNumber;
     private String username;
     private String password;
 
-    public User(String name, String email, int phoneNumber, String username, String password) {
+    public User(String name, String email, long phoneNumber, String username, String password) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -31,11 +31,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
