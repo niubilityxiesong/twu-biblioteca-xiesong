@@ -68,21 +68,16 @@ public class ManagementSystemTest {
     }
 
     @Test
-    public void checkOutBook_should_return_success_message() {
+    public void checkOut_book_should_return_success_message() {
         //given
-        String data = "1";
+        List<Book> bookList = managementSystem.getBookList();
+        Book book = bookList.get(0);
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        InputStream stdin = System.in;
-        try {
-            System.setIn(new ByteArrayInputStream(data.getBytes()));
-            managementSystem.checkOutBook();
-        } finally {
-            System.setIn(stdin);
-        }
+        managementSystem.checkOut(book);
         //then
-        assertThat(output.toString(), is("please choose a book id:\nThank you! Enjoy the book\n"));
+        assertThat(output.toString(), is("Thank you! Enjoy the 西游记\n"));
     }
 
     @Test
@@ -120,5 +115,18 @@ public class ManagementSystemTest {
         managementSystem.showMovieList();
         //then
         assertThat(output.toString(), is("id    name    year    director    level\n4    哈利波特4      JK  2003-01  未评级\n"));
+    }
+
+    @Test
+    public void checkOut_movie_should_return_success_message() {
+        //given
+        List<Movie> movieList = managementSystem.getMovieList();
+        Movie movie = movieList.get(0);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        //when
+        managementSystem.checkOut(movie);
+        //then
+        assertThat(output.toString(), is("Thank you! Enjoy the 哈利波特1\n"));
     }
 }

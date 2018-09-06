@@ -74,6 +74,7 @@ public class ManagementSystem {
         System.out.println("2. CheckOut Book");
         System.out.println("3. Return Book");
         System.out.println("4. Movies List");
+        System.out.println("5. CheckOut Movie");
         System.out.println("0. Exit System");
         int selection = inputSelection.nextInt();
         return selection;
@@ -86,7 +87,11 @@ public class ManagementSystem {
                 systemIn();
                 break;
             case 2:
-                checkOutBook();
+                Scanner inputSelection = new Scanner(System.in);
+                System.out.println("please choose a book id:");
+                int selection = inputSelection.nextInt() - 1;
+                Book selectedBook = bookList.get(selection);
+                checkOut(selectedBook);
                 systemIn();
                 break;
             case 3:
@@ -95,6 +100,14 @@ public class ManagementSystem {
                 break;
             case 4:
                 showMovieList();
+                systemIn();
+                break;
+            case 5:
+                Scanner input = new Scanner(System.in);
+                System.out.println("please choose a movie id:");
+                int index = input.nextInt() - 1;
+                Book selectedMovie = movieList.get(index);
+                checkOut(selectedMovie);
                 systemIn();
                 break;
             case 0:
@@ -133,14 +146,10 @@ public class ManagementSystem {
         }
     }
 
-    public void checkOutBook() {
-        Scanner inputSelection = new Scanner(System.in);
-        System.out.println("please choose a book id:");
-        int selection = inputSelection.nextInt() - 1;
-        Book selectedBook = bookList.get(selection);
+    public void checkOut(Book selectedBook) {
         if (selectedBook.getNumber() > 0) {
             selectedBook.setNumber(0);
-            System.out.println("Thank you! Enjoy the book");
+            System.out.println("Thank you! Enjoy the " + selectedBook.getName());
         } else {
             System.out.println("That book is not available");
         }
