@@ -114,7 +114,7 @@ public class ManagementSystemTest {
         //when
         managementSystem.showMovieList();
         //then
-        assertThat(output.toString(), is("id    name    year    director    level\n4    哈利波特4      JK  2003-01  未评级\n"));
+        assertThat(output.toString(), is("id    name      director  year  level\n4    哈利波特4      JK  2003-01    未评级\n"));
     }
 
     @Test
@@ -128,5 +128,17 @@ public class ManagementSystemTest {
         managementSystem.checkOut(movie);
         //then
         assertThat(output.toString(), is("Thank you! Enjoy the 哈利波特1\n"));
+    }
+
+    @Test
+    public void checkUserMessage_should_return_present_user_message() {
+        //given
+        managementSystem.setPresentUser(managementSystem.getUserList().get(0));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        //when
+        managementSystem.checkUserMessage();
+        //then
+        assertThat(output.toString(), is("name    email            phoneNumber\n张三    123456@qq.com    123456789013\n"));
     }
 }

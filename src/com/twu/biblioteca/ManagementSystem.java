@@ -8,6 +8,7 @@ public class ManagementSystem {
     private List<Book> bookList = new ArrayList<Book>();
     private List<Movie> movieList = new ArrayList<Movie>();
     private List<User> userList = new ArrayList<User>();
+    private User presentUser;
 
     public ManagementSystem() {
         Book book1 = new Book(1,"西游记", "吴承恩", "2018-09", 1);
@@ -32,6 +33,14 @@ public class ManagementSystem {
         this.userList.add(user1);
         User user2 = new User("李四", "345678@qq.com", 975456723613L, "011-1235", "654321");
         this.userList.add(user2);
+    }
+
+    public User getPresentUser() {
+        return presentUser;
+    }
+
+    public void setPresentUser(User presentUser) {
+        this.presentUser = presentUser;
     }
 
     public List<Book> getBookList() {
@@ -67,16 +76,48 @@ public class ManagementSystem {
         System.out.println("Welcome to library management system!");
     }
 
+    public void login() {
+        Scanner input = new Scanner(System.in);
+        User presentUser = new User();
+        System.out.println("please input your username:");
+        String username = input.nextLine();
+        for (User user : userList) {
+            if (user.getUsername().equals(username)) {
+                presentUser = user;
+            }
+        }
+        if (presentUser.getName() == null) {
+            System.out.println("username is valid!");
+            login();
+        } else {
+            System.out.println("Please input your password");
+            if (presentUser.getPassword().equals(input.nextLine())) {
+                setPresentUser(presentUser);
+                systemIn();
+            } else {
+                System.out.println("password is valid!");
+                login();
+            }
+        }
+    }
+
     public int mainMenu() {
         Scanner inputSelection = new Scanner(System.in);
+        int selection = 0;
         System.out.println("Please choose a number:");
         System.out.println("1. Books List");
         System.out.println("2. CheckOut Book");
         System.out.println("3. Return Book");
         System.out.println("4. Movies List");
         System.out.println("5. CheckOut Movie");
+        System.out.println("6. Check User Message");
         System.out.println("0. Exit System");
-        int selection = inputSelection.nextInt();
+        if (inputSelection.hasNextInt()) {
+            selection = inputSelection.nextInt();
+        } else {
+            System.out.println("Please input right number");
+            systemIn();
+        }
         return selection;
     }
 
@@ -110,6 +151,10 @@ public class ManagementSystem {
                 checkOut(selectedMovie);
                 systemIn();
                 break;
+            case 6:
+                checkUserMessage();
+                systemIn();
+                break;
             case 0:
                 break;
             default:
@@ -118,12 +163,22 @@ public class ManagementSystem {
         }
     }
 
+    public void checkUserMessage() {
+        System.out.println("name    email            phoneNumber");
+        System.out.print(presentUser.getName());
+        System.out.print("    ");
+        System.out.print(presentUser.getEmail());
+        System.out.print("    ");
+        System.out.print(presentUser.getPhoneNumber());
+        System.out.println();
+    }
+
     public void showMovieList() {
-        System.out.println("id    name    year    director    level");
+        System.out.println("id    name      director  year  level");
         for (Movie movie : movieList) {
             if (movie.getNumber() > 0) {
                 movie.printObject(movie);
-                System.out.print("  ");
+                System.out.print("    ");
                 System.out.println(movie.level);
             }
         }
