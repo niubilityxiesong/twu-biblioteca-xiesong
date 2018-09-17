@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String name;
     private String email;
@@ -56,5 +59,12 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static List<User> initUser() {
+        List<User> userList = new ArrayList<User>();
+        userList.add(new User("张三", "123456@qq.com", 123456789013L, "010-1234", "123456"));
+        userList.add(new User("李四", "345678@qq.com", 975456723613L, "011-1235", "654321"));
+        return userList;
     }
 }

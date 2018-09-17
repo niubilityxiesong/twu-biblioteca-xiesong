@@ -1,38 +1,18 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ManagementSystem {
-    private List<Book> bookList = new ArrayList<Book>();
-    private List<Movie> movieList = new ArrayList<Movie>();
-    private List<User> userList = new ArrayList<User>();
+    private List<Book> bookList;
+    private List<Movie> movieList;
+    private List<User> userList;
     private User presentUser;
 
     public ManagementSystem() {
-        Book book1 = new Book(1,"西游记", "吴承恩", "2018-09", 1);
-        this.bookList.add(book1);
-        Book book2 = new Book(2,"红楼梦", "曹雪芹", "2017-09", 1);
-        this.bookList.add(book2);
-        Book book3 = new Book(3,"水浒传", "施耐庵", "2016-09", 1);
-        this.bookList.add(book3);
-        Book book4 = new Book(4,"三国演义", "罗贯中", "2015-09", 1);
-        this.bookList.add(book4);
-
-        Movie movie1 = new Movie(1, "哈利波特1", "JK", "2000-01", 1, "10");
-        this.movieList.add(movie1);
-        Movie movie2 = new Movie(2, "哈利波特2", "JK", "2001-01", 1, "9");
-        this.movieList.add(movie2);
-        Movie movie3 = new Movie(3, "哈利波特3", "JK", "2002-01", 1, "8");
-        this.movieList.add(movie3);
-        Movie movie4 = new Movie(4, "哈利波特4", "JK", "2003-01", 1, "未评级");
-        this.movieList.add(movie4);
-
-        User user1 = new User("张三", "123456@qq.com", 123456789013L, "010-1234", "123456");
-        this.userList.add(user1);
-        User user2 = new User("李四", "345678@qq.com", 975456723613L, "011-1235", "654321");
-        this.userList.add(user2);
+        this.bookList = Book.initBook();
+        this.movieList = Movie.initMovie();
+        this.userList = User.initUser();
     }
 
     public User getPresentUser() {

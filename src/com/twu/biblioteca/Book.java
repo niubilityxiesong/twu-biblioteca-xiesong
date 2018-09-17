@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
     private int id;
     private String name;
@@ -63,5 +66,14 @@ public class Book {
         System.out.print(book.getAuthor());
         System.out.print("  ");
         System.out.print(book.getDate());
+    }
+
+    public static List<Book> initBook() {
+        List<Book> bookList = new ArrayList<Book>();
+        bookList.add(new Book(1,"西游记", "吴承恩", "2018-09", 1));
+        bookList.add(new Book(2,"红楼梦", "曹雪芹", "2017-09", 1));
+        bookList.add(new Book(3,"水浒传", "施耐庵", "2016-09", 1));
+        bookList.add(new Book(4,"三国演义", "罗贯中", "2015-09", 1));
+        return bookList;
     }
 }
