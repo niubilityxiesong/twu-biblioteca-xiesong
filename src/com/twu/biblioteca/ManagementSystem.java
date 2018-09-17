@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.LibraryEntity;
+import com.twu.biblioteca.entity.Movie;
+import com.twu.biblioteca.entity.User;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -112,7 +117,7 @@ public class ManagementSystem {
                 System.out.println("please choose a book id:");
                 int selection = inputSelection.nextInt() - 1;
                 Book selectedBook = bookList.get(selection);
-                checkOut(selectedBook);
+                LibraryEntity.checkOut(selectedBook);
                 systemIn();
                 break;
             case 3:
@@ -127,8 +132,8 @@ public class ManagementSystem {
                 Scanner input = new Scanner(System.in);
                 System.out.println("please choose a movie id:");
                 int index = input.nextInt() - 1;
-                Book selectedMovie = movieList.get(index);
-                checkOut(selectedMovie);
+                LibraryEntity selectedMovie = movieList.get(index);
+                LibraryEntity.checkOut(selectedMovie);
                 systemIn();
                 break;
             case 6:
@@ -159,7 +164,7 @@ public class ManagementSystem {
             if (movie.getNumber() > 0) {
                 movie.printObject(movie);
                 System.out.print("    ");
-                System.out.println(movie.level);
+                System.out.println(movie.getLevel());
             }
         }
     }
@@ -178,15 +183,6 @@ public class ManagementSystem {
         }
         if (mark) {
             System.out.println("That is not a valid book to return.");
-        }
-    }
-
-    public void checkOut(Book selectedBook) {
-        if (selectedBook.getNumber() > 0) {
-            selectedBook.setNumber(0);
-            System.out.println("Thank you! Enjoy the " + selectedBook.getName());
-        } else {
-            System.out.println("That book is not available");
         }
     }
 

@@ -1,9 +1,9 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie extends Book{
+public class Movie extends LibraryEntity{
     String level;
 
     public Movie(int id, String name, String author, String date, int number, String level) {

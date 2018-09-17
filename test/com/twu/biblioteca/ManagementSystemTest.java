@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.entity.Book;
+import com.twu.biblioteca.entity.LibraryEntity;
+import com.twu.biblioteca.entity.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -75,9 +78,9 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.checkOut(book);
+        LibraryEntity.checkOut(book);
         //then
-        assertThat(output.toString(), is("Thank you! Enjoy the 西游记\n"));
+        assertThat(output.toString(), is("Thank you! Enjoy the Book\n"));
     }
 
     @Test
@@ -125,9 +128,9 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.checkOut(movie);
+        LibraryEntity.checkOut(movie);
         //then
-        assertThat(output.toString(), is("Thank you! Enjoy the 哈利波特1\n"));
+        assertThat(output.toString(), is("Thank you! Enjoy the Movie\n"));
     }
 
     @Test
