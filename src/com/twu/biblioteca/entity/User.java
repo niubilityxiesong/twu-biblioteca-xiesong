@@ -1,7 +1,5 @@
 package com.twu.biblioteca.entity;
 
-import com.twu.biblioteca.service.UserService;
-
 import java.util.ArrayList;
 import java.util.List;
 

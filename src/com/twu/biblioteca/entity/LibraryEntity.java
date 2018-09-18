@@ -1,7 +1,5 @@
 package com.twu.biblioteca.entity;
 
-import com.twu.biblioteca.display.DisplayMessage;
-
 public abstract class LibraryEntity {
     private int id;
     private String name;

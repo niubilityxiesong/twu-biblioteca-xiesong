@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends LibraryEntity{
-    private int id;
-    private String name;
-    private String author;
-    private String date;
-    private int number;
-
     public Book(int id, String name, String author, String date, int number) {
         super(id, name, author, date, number);
     }
