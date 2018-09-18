@@ -66,14 +66,4 @@ public abstract class LibraryEntity {
         System.out.print("  ");
         System.out.print(libraryEntity.getDate());
     }
-
-    public static void checkOut(LibraryEntity libraryEntity) {
-        String[] s = libraryEntity.getClass().getName().split("\\.");
-        if (libraryEntity.getNumber() > 0) {
-            libraryEntity.setNumber(0);
-            DisplayMessage.checkOutSuccessMessage(s[s.length - 1]);
-        } else {
-            DisplayMessage.checkOutFailMessage(s[s.length - 1]);
-        }
-    }
 }

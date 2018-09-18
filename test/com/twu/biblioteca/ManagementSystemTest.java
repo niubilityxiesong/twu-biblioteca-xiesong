@@ -2,9 +2,9 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.display.DisplayMessage;
 import com.twu.biblioteca.entity.Book;
-import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.LibraryEntityService;
 import com.twu.biblioteca.service.MovieService;
 import com.twu.biblioteca.service.UserService;
 import org.junit.Before;
@@ -82,7 +82,7 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        LibraryEntity.checkOut(book);
+        LibraryEntityService.checkOut(book);
         //then
         assertThat(output.toString(), is("Thank you! Enjoy the Book\n"));
     }
@@ -132,7 +132,7 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        LibraryEntity.checkOut(movie);
+        LibraryEntityService.checkOut(movie);
         //then
         assertThat(output.toString(), is("Thank you! Enjoy the Movie\n"));
     }

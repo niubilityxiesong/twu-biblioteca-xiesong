@@ -6,6 +6,7 @@ import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.service.BookService;
+import com.twu.biblioteca.service.LibraryEntityService;
 import com.twu.biblioteca.service.MovieService;
 import com.twu.biblioteca.service.UserService;
 
@@ -93,7 +94,7 @@ public class ManagementSystem {
                 DisplayMessage.ChooseIdMessage("book");
                 int selection = inputSelection.nextInt() - 1;
                 Book selectedBook = bookList.get(selection);
-                LibraryEntity.checkOut(selectedBook);
+                LibraryEntityService.checkOut(selectedBook);
                 systemIn();
                 break;
             case 3:
@@ -109,7 +110,7 @@ public class ManagementSystem {
                 DisplayMessage.ChooseIdMessage("movie");
                 int index = input.nextInt() - 1;
                 LibraryEntity selectedMovie = movieList.get(index);
-                LibraryEntity.checkOut(selectedMovie);
+                LibraryEntityService.checkOut(selectedMovie);
                 systemIn();
                 break;
             case 6:
