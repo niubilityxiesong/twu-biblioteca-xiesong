@@ -5,6 +5,7 @@ import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
+import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.MovieService;
 import com.twu.biblioteca.service.UserService;
 
@@ -88,7 +89,7 @@ public class ManagementSystem {
     public void gateway(int inputNumber) {
         switch (inputNumber) {
             case 1:
-                showBookList();
+                BookService.showBookList(bookList);
                 systemIn();
                 break;
             case 2:
@@ -100,7 +101,7 @@ public class ManagementSystem {
                 systemIn();
                 break;
             case 3:
-                returnBook();
+                BookService.returnBook(bookList);
                 systemIn();
                 break;
             case 4:
@@ -124,33 +125,6 @@ public class ManagementSystem {
             default:
                 System.out.println("Select a valid option!");
                 systemIn();
-        }
-    }
-
-    public void returnBook() {
-        boolean mark = true;
-        Scanner inputSelection = new Scanner(System.in);
-        System.out.println("please write the book name:");
-        final String bookName = inputSelection.nextLine();
-        for (Book book : bookList) {
-            if (book.getName().equals(bookName)) {
-                book.setNumber(1);
-                mark = false;
-                System.out.println("Thank you for returning the book.");
-            }
-        }
-        if (mark) {
-            System.out.println("That is not a valid book to return.");
-        }
-    }
-
-    public void showBookList() {
-        System.out.println("id   name           details");
-        for (Book book : bookList) {
-            if (book.getNumber() > 0) {
-                book.printObject(book);
-                System.out.println();
-            }
         }
     }
 }

@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
+import com.twu.biblioteca.service.BookService;
 import com.twu.biblioteca.service.MovieService;
 import com.twu.biblioteca.service.UserService;
 import org.junit.Before;
@@ -50,7 +51,7 @@ public class ManagementSystemTest {
         String expect = "id   name           details\n";
         expect += "1    西游记      吴承恩  2018-09\n";
         //when
-        managementSystem.showBookList();
+        BookService.showBookList(managementSystem.getBookList());
         //then
         assertThat(output.toString(), is(expect));
     }
@@ -98,7 +99,7 @@ public class ManagementSystemTest {
         InputStream stdin = System.in;
         try {
             System.setIn(new ByteArrayInputStream(data.getBytes()));
-            managementSystem.returnBook();
+            BookService.returnBook(managementSystem.getBookList());
         } finally {
             System.setIn(stdin);
         }
