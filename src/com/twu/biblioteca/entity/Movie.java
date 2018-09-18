@@ -3,7 +3,7 @@ package com.twu.biblioteca.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie extends LibraryEntity{
+public class Movie extends Library {
     String level;
 
     public Movie(int id, String name, String author, String date, int number, String level) {

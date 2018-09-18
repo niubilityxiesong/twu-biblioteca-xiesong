@@ -3,7 +3,7 @@ package com.twu.biblioteca.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book extends LibraryEntity{
+public class Book extends Library {
     public Book(int id, String name, String author, String date, int number) {
         super(id, name, author, date, number);
     }

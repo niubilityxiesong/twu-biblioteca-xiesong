@@ -1,13 +1,13 @@
 package com.twu.biblioteca.entity;
 
-public abstract class LibraryEntity {
+public abstract class Library {
     private int id;
     private String name;
     private String author;
     private String date;
     private int number;
 
-    public LibraryEntity(int id, String name, String author, String date, int number) {
+    public Library(int id, String name, String author, String date, int number) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -55,13 +55,13 @@ public abstract class LibraryEntity {
         this.number = number;
     }
 
-    public void printObject(LibraryEntity libraryEntity) {
-        System.out.print(libraryEntity.getId());
+    public void printObject(Library library) {
+        System.out.print(library.getId());
         System.out.print("    ");
-        System.out.print(libraryEntity.getName());
+        System.out.print(library.getName());
         System.out.print("      ");
-        System.out.print(libraryEntity.getAuthor());
+        System.out.print(library.getAuthor());
         System.out.print("  ");
-        System.out.print(libraryEntity.getDate());
+        System.out.print(library.getDate());
     }
 }

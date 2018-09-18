@@ -2,11 +2,11 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.display.DisplayMessage;
 import com.twu.biblioteca.entity.Book;
-import com.twu.biblioteca.entity.LibraryEntity;
+import com.twu.biblioteca.entity.Library;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
 import com.twu.biblioteca.service.BookService;
-import com.twu.biblioteca.service.LibraryEntityService;
+import com.twu.biblioteca.service.LibraryService;
 import com.twu.biblioteca.service.MovieService;
 import com.twu.biblioteca.service.UserService;
 
@@ -94,7 +94,7 @@ public class ManagementSystem {
                 DisplayMessage.ChooseIdMessage("book");
                 int selection = inputSelection.nextInt() - 1;
                 Book selectedBook = bookList.get(selection);
-                LibraryEntityService.checkOut(selectedBook);
+                LibraryService.checkOut(selectedBook);
                 systemIn();
                 break;
             case 3:
@@ -109,8 +109,8 @@ public class ManagementSystem {
                 Scanner input = new Scanner(System.in);
                 DisplayMessage.ChooseIdMessage("movie");
                 int index = input.nextInt() - 1;
-                LibraryEntity selectedMovie = movieList.get(index);
-                LibraryEntityService.checkOut(selectedMovie);
+                Library selectedMovie = movieList.get(index);
+                LibraryService.checkOut(selectedMovie);
                 systemIn();
                 break;
             case 6:
