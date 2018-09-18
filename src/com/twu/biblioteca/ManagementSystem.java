@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.display.ShowMenu;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
@@ -13,11 +14,13 @@ public class ManagementSystem {
     private List<Movie> movieList;
     private List<User> userList;
     private User presentUser;
+    private ShowMenu menu;
 
     public ManagementSystem() {
         this.bookList = Book.initBook();
         this.movieList = Movie.initMovie();
         this.userList = User.initUser();
+        this.menu = ShowMenu.initMenu();
     }
 
     public User getPresentUser() {
@@ -89,14 +92,8 @@ public class ManagementSystem {
     public int mainMenu() {
         Scanner inputSelection = new Scanner(System.in);
         int selection = 0;
-        System.out.println("Please choose a number:");
-        System.out.println("1. Books List");
-        System.out.println("2. CheckOut Book");
-        System.out.println("3. Return Book");
-        System.out.println("4. Movies List");
-        System.out.println("5. CheckOut Movie");
-        System.out.println("6. Check User Message");
-        System.out.println("0. Exit System");
+
+        menu.displayMenu();
         if (inputSelection.hasNextInt()) {
             selection = inputSelection.nextInt();
         } else {
