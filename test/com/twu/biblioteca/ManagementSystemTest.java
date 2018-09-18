@@ -3,6 +3,8 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
+import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -115,7 +117,7 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.showMovieList();
+        MovieService.showMovieList(managementSystem.getMovieList());
         //then
         assertThat(output.toString(), is("id    name      director  year  level\n4    哈利波特4      JK  2003-01    未评级\n"));
     }
@@ -140,7 +142,7 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.checkUserMessage();
+        UserService.checkUserMessage(managementSystem.getPresentUser());
         //then
         assertThat(output.toString(), is("name    email            phoneNumber\n张三    123456@qq.com    123456789013\n"));
     }

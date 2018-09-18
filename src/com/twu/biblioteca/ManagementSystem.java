@@ -5,6 +5,8 @@ import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
 import com.twu.biblioteca.entity.User;
+import com.twu.biblioteca.service.MovieService;
+import com.twu.biblioteca.service.UserService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -65,28 +67,8 @@ public class ManagementSystem {
     }
 
     public void login() {
-        Scanner input = new Scanner(System.in);
-        User presentUser = new User();
-        System.out.println("please input your username:");
-        String username = input.nextLine();
-        for (User user : userList) {
-            if (user.getUsername().equals(username)) {
-                presentUser = user;
-            }
-        }
-        if (presentUser.getName() == null) {
-            System.out.println("username is valid!");
-            login();
-        } else {
-            System.out.println("Please input your password");
-            if (presentUser.getPassword().equals(input.nextLine())) {
-                setPresentUser(presentUser);
-                systemIn();
-            } else {
-                System.out.println("password is valid!");
-                login();
-            }
-        }
+        presentUser = UserService.getUser(userList);
+        systemIn();
     }
 
     public int mainMenu() {
@@ -122,7 +104,7 @@ public class ManagementSystem {
                 systemIn();
                 break;
             case 4:
-                showMovieList();
+                MovieService.showMovieList(movieList);
                 systemIn();
                 break;
             case 5:
@@ -134,7 +116,7 @@ public class ManagementSystem {
                 systemIn();
                 break;
             case 6:
-                checkUserMessage();
+                UserService.checkUserMessage(presentUser);
                 systemIn();
                 break;
             case 0:
@@ -142,27 +124,6 @@ public class ManagementSystem {
             default:
                 System.out.println("Select a valid option!");
                 systemIn();
-        }
-    }
-
-    public void checkUserMessage() {
-        System.out.println("name    email            phoneNumber");
-        System.out.print(presentUser.getName());
-        System.out.print("    ");
-        System.out.print(presentUser.getEmail());
-        System.out.print("    ");
-        System.out.print(presentUser.getPhoneNumber());
-        System.out.println();
-    }
-
-    public void showMovieList() {
-        System.out.println("id    name      director  year  level");
-        for (Movie movie : movieList) {
-            if (movie.getNumber() > 0) {
-                movie.printObject(movie);
-                System.out.print("    ");
-                System.out.println(movie.getLevel());
-            }
         }
     }
 

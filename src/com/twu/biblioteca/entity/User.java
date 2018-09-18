@@ -1,5 +1,7 @@
 package com.twu.biblioteca.entity;
 
+import com.twu.biblioteca.service.UserService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ public class User {
     private long phoneNumber;
     private String username;
     private String password;
+    private UserService userService;
 
     public User(String name, String email, long phoneNumber, String username, String password) {
         this.name = name;
@@ -16,6 +19,7 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
+        this.userService = new UserService();
     }
 
     public User() {
@@ -67,4 +71,6 @@ public class User {
         userList.add(new User("李四", "345678@qq.com", 975456723613L, "011-1235", "654321"));
         return userList;
     }
+
+
 }
