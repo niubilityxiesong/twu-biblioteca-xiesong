@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.display.ShowMenu;
+import com.twu.biblioteca.display.DisplayMessage;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
@@ -17,13 +17,13 @@ public class ManagementSystem {
     private List<Movie> movieList;
     private List<User> userList;
     private User presentUser;
-    private ShowMenu menu;
+    private DisplayMessage menu;
 
     public ManagementSystem() {
         this.bookList = Book.initBook();
         this.movieList = Movie.initMovie();
         this.userList = User.initUser();
-        this.menu = ShowMenu.initMenu();
+        this.menu = DisplayMessage.initMenu();
     }
 
     public User getPresentUser() {
@@ -63,10 +63,6 @@ public class ManagementSystem {
         gateway(inputNumber);
     }
 
-    public void helloPage() {
-        System.out.println("Welcome to library management system!");
-    }
-
     public void login() {
         presentUser = UserService.getUser(userList);
         systemIn();
@@ -80,7 +76,7 @@ public class ManagementSystem {
         if (inputSelection.hasNextInt()) {
             selection = inputSelection.nextInt();
         } else {
-            System.out.println("Please input right number");
+            DisplayMessage.notNumberMessage();
             systemIn();
         }
         return selection;
@@ -94,7 +90,7 @@ public class ManagementSystem {
                 break;
             case 2:
                 Scanner inputSelection = new Scanner(System.in);
-                System.out.println("please choose a book id:");
+                DisplayMessage.ChooseIdMessage("book");
                 int selection = inputSelection.nextInt() - 1;
                 Book selectedBook = bookList.get(selection);
                 LibraryEntity.checkOut(selectedBook);
@@ -110,7 +106,7 @@ public class ManagementSystem {
                 break;
             case 5:
                 Scanner input = new Scanner(System.in);
-                System.out.println("please choose a movie id:");
+                DisplayMessage.ChooseIdMessage("movie");
                 int index = input.nextInt() - 1;
                 LibraryEntity selectedMovie = movieList.get(index);
                 LibraryEntity.checkOut(selectedMovie);
@@ -123,7 +119,7 @@ public class ManagementSystem {
             case 0:
                 break;
             default:
-                System.out.println("Select a valid option!");
+                DisplayMessage.validInputMessage();
                 systemIn();
         }
     }

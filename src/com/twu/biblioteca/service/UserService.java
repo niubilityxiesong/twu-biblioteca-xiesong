@@ -1,5 +1,6 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.display.DisplayMessage;
 import com.twu.biblioteca.entity.User;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public class UserService {
     public static User getUser(List<User> userList) {
         User presentUser = new User();
         Scanner input = new Scanner(System.in);
-        System.out.println("please input your username:");
+        DisplayMessage.inputUsernameMessage();
         String username = input.nextLine();
         for (User user : userList) {
             if (user.getUsername().equals(username)) {
@@ -18,14 +19,14 @@ public class UserService {
             }
         }
         if (presentUser.getName() == null) {
-            System.out.println("username is valid!");
+            DisplayMessage.usernameValidMessage();
             presentUser = getUser(userList);
         } else {
-            System.out.println("Please input your password");
+            DisplayMessage.inputPasswordMessage();
             if (presentUser.getPassword().equals(input.nextLine())) {
                 return presentUser;
             } else {
-                System.out.println("password is valid!");
+                DisplayMessage.passwordValidMessage();
                 presentUser = getUser(userList);
             }
         }
@@ -33,7 +34,7 @@ public class UserService {
     }
 
     public static void checkUserMessage(User presentUser) {
-        System.out.println("name    email            phoneNumber");
+        DisplayMessage.userHeaderMessage();
         System.out.print(presentUser.getName());
         System.out.print("    ");
         System.out.print(presentUser.getEmail());

@@ -11,7 +11,6 @@ public class User {
     private long phoneNumber;
     private String username;
     private String password;
-    private UserService userService;
 
     public User(String name, String email, long phoneNumber, String username, String password) {
         this.name = name;
@@ -19,7 +18,6 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.username = username;
         this.password = password;
-        this.userService = new UserService();
     }
 
     public User() {

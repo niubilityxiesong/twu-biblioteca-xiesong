@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.display.DisplayMessage;
 import com.twu.biblioteca.entity.Book;
 import com.twu.biblioteca.entity.LibraryEntity;
 import com.twu.biblioteca.entity.Movie;
@@ -33,7 +34,7 @@ public class ManagementSystemTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         //when
-        managementSystem.helloPage();
+        DisplayMessage.welcomeMessage();
         //then
         assertThat(output.toString(), is("Welcome to library management system!\n"));
     }

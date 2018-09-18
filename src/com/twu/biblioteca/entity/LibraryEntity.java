@@ -1,5 +1,7 @@
 package com.twu.biblioteca.entity;
 
+import com.twu.biblioteca.display.DisplayMessage;
+
 public abstract class LibraryEntity {
     private int id;
     private String name;
@@ -66,12 +68,12 @@ public abstract class LibraryEntity {
     }
 
     public static void checkOut(LibraryEntity libraryEntity) {
+        String[] s = libraryEntity.getClass().getName().split("\\.");
         if (libraryEntity.getNumber() > 0) {
             libraryEntity.setNumber(0);
-            String[] s = libraryEntity.getClass().getName().split("\\.");
-            System.out.println("Thank you! Enjoy the " + s[s.length - 1]);
+            DisplayMessage.checkOutSuccessMessage(s[s.length - 1]);
         } else {
-            System.out.println("That book is not available");
+            DisplayMessage.checkOutFailMessage(s[s.length - 1]);
         }
     }
 }
